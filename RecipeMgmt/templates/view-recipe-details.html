@@ -1,0 +1,209 @@
+{% set title = "Recipe Details" %}
+{% set curPage = "RecipeDetails" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div id="section" >
+
+    <div class="page-banner mb-5">
+
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <div class="text-center mb-3">
+            <h4 class="text-uppercase">{{recipe['recipe_title']}}</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="container-fluid">
+      <div class="mb-3">
+        <a href="javascript:window.history.go(-1)" class="btn btn-sm btn-warning"><-Back</a>
+      </div>
+      
+      <div class="row mb-5">
+        <div class="col-sm-6">
+          <a href="{{url_for('static',filename='images/recipes/'+recipe['img_file_name'])}}" target="_blank">
+            <img src="{{url_for('static',filename='images/recipes/'+recipe['img_file_name'])}}" alt="{{recipe['recipe_title']}}"
+              style="width: 100%; height:60vh;" />
+          </a>
+        </div>
+        <div class="col-sm-6">
+          <div class="row mb-3">
+            <div class="col-sm-6">
+              <h6>Category</h6>
+              <p>{{recipe['category'][0]['category_name']}}</p>
+            </div>
+            <div class="col-sm-6">
+              <h6>Sub Category</h6>
+              <p>{{recipe['sub_category'][0]['sub_category_name']}}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-6">
+              <h6>Servings</h6>
+              <p>{{recipe['servings']}}</p>
+            </div>
+            <div class="col-sm-6">
+              <h6>Cook Time</h6>
+              <p>{{recipe['cook_time']}}</p>
+            </div>
+          </div>
+          <h6>Description</h6>
+          <p class="text-secondary-emphasis">{{recipe['description']}}</p>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-sm-3">
+          <h6 class="text-center text-success">Nutritional Information</h5>
+            <div class="border p-3">
+              {% for item in recipe['nutritional_information']%}
+              <p class="d-flex flex-row justify-content-between border-bottom pb-1">
+                <span><strong class="text-secondary">{{item["name"]}}</strong></span>
+                <span>{{item["quantity"]}}</span>
+              </p>
+              {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+          <h6 class="text-center text-success">Ingredients</h5>
+            <div class="border p-3">
+              {% for item in recipe['ingredients']%}
+              <p><strong>{{item["quantity"]}}</strong> {{item["name"]}}</p>
+              {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+          <h6 class="text-center text-success">Directions</h5>
+            <div class="border p-3">
+              {% for item in recipe['directions']%}
+              <h6>Step {{item["step"]}}</h6>
+              <p>{{item['instruction']}}</p>
+              {% endfor %}
+            </div>
+        </div>
+        
+      </div>
+<hr>
+      <!-- Ratings & Reviews -->
+      <div class="mb-3">
+        <h3 class="mb-3 text-success">Ratings & Reviews</h3>
+        <!-- Unregistered Customer Rating & Reviews -->
+        {% if not 'logged_in' in session %}
+          <div>
+            <h5>Give your ratings & review for this recipe</h5>
+            <div class="border m-3 p-5 bg-light">
+
+              <form action="/add-review/" method="post">
+                <div class="star-rating mb-3">
+                  <input type="radio" id="5-stars" name="rating" value="5" required />
+                  <label for="5-stars" class="star">&#9733;</label>
+                  <input type="radio" id="4-stars" name="rating" value="4" />
+                  <label for="4-stars" class="star">&#9733;</label>
+                  <input type="radio" id="3-stars" name="rating" value="3" />
+                  <label for="3-stars" class="star">&#9733;</label>
+                  <input type="radio" id="2-stars" name="rating" value="2 " />
+                  <label for="2-stars" class="star">&#9733;</label>
+                  <input type="radio" id="1-stars" name="rating" value="1" />
+                  <label for="1-stars" class="star">&#9733;</label>
+                </div>
+                <div class="mb-3">
+                  <label for="review" class="form-label">Review</label>
+                  <textarea name="review" id="review" class="form-control" cols="30" rows="3"></textarea>
+                </div>
+                <input type="hidden" name="recipe_id" id="recipe_id" value="{{recipe['_id']}}" placeholder="Recipe id">
+                <button type="submit" class="btn btn-success">Share</button>
+              </form>             
+              
+            </div>
+          </div>
+        {% else %}
+        <!-- Registered Users view reviews -->
+        <div>
+          <div class="border bg-light m-3 p-5">
+            {% if not reviews %}
+            <h4 class="text-center text-danger">Sorry, No reviews shared yet</h4>
+            {% endif %}
+
+            {% for review in reviews %}
+            <div class="border p-3 mb-2">
+              <div class="star-rating mb-1">
+                <input type="radio" id="5-stars-{{loop.index}}" name="rating_{{loop.index}}" value="5" {{'checked' if
+                  review['rating']==5}} />
+                <label for="5-stars-{{loop.index}}" class="star">&#9733;</label>
+                <input type="radio" id="4-stars-{{loop.index}}" name="rating_{{loop.index}}" value="4" {{'checked' if
+                  review['rating']==4}} />
+                <label for="4-stars-{{loop.index}}" class="star">&#9733;</label>
+                <input type="radio" id="3-stars-{{loop.index}}" name="rating_{{loop.index}}" value="3" {{'checked' if
+                  review['rating']==3}} />
+                <label for="3-stars-{{loop.index}}" class="star">&#9733;</label>
+                <input type="radio" id="2-stars-{{loop.index}}" name="rating_{{loop.index}}" value="2" {{'checked' if
+                  review['rating']==2}} />
+                <label for="2-stars-{{loop.index}}" class="star">&#9733;</label>
+                <input type="radio" id="1-stars-{{loop.index}}" name="rating_{{loop.index}}" value="1" {{'checked' if
+                  review['rating']==1}} />
+                <label for="1-stars-{{loop.index}}" class="star">&#9733;</label>
+              </div>
+              <div class="mb-2">
+                <q>{{review['review']}}</q>                
+              </div>
+              <div class="mb-3">-> {{review['posted_on'].strftime("%d %B, %Y - %H:%M %p")}}</div>
+
+              <!-- Add Comment Button -->
+              <div class="add-comments">
+                <p>
+                  <a class="btn btn-sm btn-success" data-bs-toggle="collapse" href="#addComment-{{loop.index}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Add Comments
+                  </a>
+                </p>
+                <div class="collapse" id="addComment-{{loop.index}}">
+                  <div class="card card-body">
+                    <form action="/add-review-comments/" method="post">
+                      <div class="mb-3">
+                        <label for="comment" class="form-label">Comments</label>
+                        <textarea name="comment" id="comment" cols="30" rows="4" class="form-control"></textarea>
+                      </div>
+                      <div>
+                        <input type="hidden" name="recipe_id" value="{{recipe['_id']}}">
+                        <input type="hidden" name="review_id" value="{{review['_id']}}">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Save">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View all comments -->
+              <div>
+                <h5>Comments</h5>
+                {% if not review['comments']%}
+                <h6 class="text-danger">No Comments yet</h6>
+                {% endif %}
+                {% for comment in review['comments'] %}
+                <div class="border p-3 mb-2 text-end">
+                  <q>{{comment['comment']}}</q>
+                  <div> - {{comment["user"]["full_name"]}}</div>
+                </div>
+                {% endfor%}
+              </div>
+              
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        {% endif %}
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+{% endblock %}

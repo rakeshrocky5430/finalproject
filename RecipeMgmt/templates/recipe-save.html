@@ -1,0 +1,105 @@
+{% set title = "Recipes" %}
+{% set curPage = "Recipes" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div class="container my-4">
+    <h5 class="text-center border border-success bg-white py-2">{{ 'Update' if recipe else 'Add' }} {{title}}</h5>
+    <div class="border bg-white p-4">
+
+      <form action="{{request.uri}}"  method="post" enctype="multipart/form-data">
+        <div class="row justify-content-center mb-4">
+          <div class="col-sm-4">
+            <label for="category_id" class="form-label required">Category</label>
+            <select name="category_id" id="category_id" class="form-select" required>
+              <option value="">--Select--</option>
+              {% for item in categories %}
+              <option value="{{item._id}}" {{'selected' if item['_id']==recipe['category_id']}}>{{item.category_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <label for="sub_category_id" class="form-label required">Sub category</label>
+            <select name="sub_category_id" id="sub_category_id" class="form-select" required>
+              <option value="">--select--</option>
+              {% for item in sub_categories %}
+              <option value="{{item._id}}" {{'selected' if item['_id']==recipe['sub_category_id']}}>{{item.sub_category_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-sm-8">
+            <label for="recipe_title" class="form-label required">Recipe Title</label>
+            <input type="text" class="form-control" name="recipe_title" id="recipe_title" value="{{recipe['recipe_title']}}" required>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-sm-4">
+            <label for="servings" class="form-label required">Servings</label>
+            <input type="text" name="servings" id="servings" value="{{recipe['servings']}}" class="form-control" required>
+          </div>
+          <div class="col-sm-4">
+            <label for="cook_time" class="form-label required">Cook time</label>
+            <input type="text" name="cook_time" id="cook_time" value="{{recipe['cook_time']}}" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-sm-8">
+            <label for="recipe_image" class="form-label required">Recipe Image</label>
+            <input type="file" class="form-control" name="recipe_image" id="recipe_image"  {{'required' if not  recipe['_id']}}>
+            <input type="hidden" value="{{recipe['img_file_name']}}" name="img_file_name">
+            {% if recipe['_id']%}
+            <a class="d-inline-block m-2" href="{{url_for('static',filename='images/recipes/'+recipe['img_file_name'])}}" target="_blank">view image</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-sm-8">
+            <label for="description" class="form-label required">Recipe Description</label>
+            <textarea name="description" id="description" rows="6" class="form-control">{{recipe['description']}}</textarea>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-sm-8">
+            <input type="hidden" name="recipe_id" value="{{recipe['_id']}}">
+            <button type="submit" class="btn btn-success w-100">Save</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
+
+{% block script %}
+<script>
+  $(function(){
+
+    $("#category_id").change(function(){
+        var category_id = this.value;
+        $.get("/get-sub-categories",{category_id:category_id},function(data){
+          if(data)
+          {
+            $("#sub_category_id").empty();
+            $.each(data, function(i,sub_cat){
+              console.log(sub_cat['_id']['$oid'])
+              $("#sub_category_id").append($('<option>').val(sub_cat['_id']['$oid']).text(sub_cat['sub_category_name']))
+            })
+          }
+          
+        })
+     });
+   
+   });
+</script>
+{% endblock %}

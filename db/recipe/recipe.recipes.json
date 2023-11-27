@@ -1,0 +1,484 @@
+[{
+  "_id": {
+    "$oid": "64799c3ac944bf9f6e29f272"
+  },
+  "sub_category_id": {
+    "$oid": "647983295201ac662168e0a5"
+  },
+  "recipe_title": "Apple Chips",
+  "servings": "2",
+  "cook_time": "2 hrs",
+  "description": "Making your own apple chips is extremely easy—even without a fancy dehydrator. \r\n\r\nPick an apple on the crisper side to make these, like Honeycrisp, Granny Smith, or Pink Lady. Avoid softer, mealier apples like Red Delicious or Fuji—they just don't crisp up the same way. \r\n\r\nSlice the apples as thinly as you can into rounds, around 1/8\" thick. We like using a mandoline to get thin and even slices, just use caution. If you don't have a mandoline, use the sharpest knife you have and (carefully) slice as thin of slices as possible. The thinner the slice, the better the crisp.",
+  "ingredients": [
+    {
+      "name": "apples, thinly sliced",
+      "quantity": "2",
+      "id": {
+        "$oid": "6479f86ef3e48b2a8750b713"
+      }
+    },
+    {
+      "name": "granulated sugar",
+      "quantity": "2 tsp",
+      "id": {
+        "$oid": "6479f878f3e48b2a8750b714"
+      }
+    },
+    {
+      "name": "cinnamon",
+      "quantity": "1/2 tsp",
+      "id": {
+        "$oid": "6479f88bf3e48b2a8750b715"
+      }
+    }
+  ],
+  "nutritional_information": [
+    {
+      "name": "Calories",
+      "quantity": "112",
+      "id": {
+        "$oid": "647a15c1dc8475546885195e"
+      }
+    },
+    {
+      "name": "Sodium",
+      "quantity": "2 mg",
+      "id": {
+        "$oid": "647a15d5dc8475546885195f"
+      }
+    },
+    {
+      "name": "Carbohydrates",
+      "quantity": "25 g",
+      "id": {
+        "$oid": "647a15e8dc84755468851960"
+      }
+    },
+    {
+      "name": "Fat",
+      "quantity": "0 g",
+      "id": {
+        "$oid": "647a15f0dc84755468851961"
+      }
+    },
+    {
+      "name": "Saturated fat",
+      "quantity": "0 g",
+      "id": {
+        "$oid": "647a15fbdc84755468851962"
+      }
+    },
+    {
+      "name": "Fiber",
+      "quantity": "5 g",
+      "id": {
+        "$oid": "647a1610dc84755468851963"
+      }
+    },
+    {
+      "name": "Sugar",
+      "quantity": "23 g",
+      "id": {
+        "$oid": "647a161fdc84755468851964"
+      }
+    },
+    {
+      "name": "Protein",
+      "quantity": "0 g",
+      "id": {
+        "$oid": "647a162cdc84755468851965"
+      }
+    },
+    {
+      "name": "Calcium",
+      "quantity": "17 mg",
+      "id": {
+        "$oid": "647a1638dc84755468851966"
+      }
+    },
+    {
+      "name": "Potassium",
+      "quantity": "198 mg",
+      "id": {
+        "$oid": "647a16744507361a0886923a"
+      }
+    }
+  ],
+  "img_file_name": "apple-chips-2.jpg",
+  "inserted_by": {
+    "$oid": "6474758846c0e914a4524386"
+  },
+  "is_active": true,
+  "status": 2,
+  "category_id": {
+    "$oid": "6478f2465b582af3a1de2120"
+  },
+  "directions": [
+    {
+      "step": "1",
+      "instruction": "In a large bowl toss apples with cinnamon and sugar. Working in batches, place apples in a single layer in basket of air fryer (some overlap is okay). ",
+      "id": {
+        "$oid": "647a0edc139bb9a4136758d9"
+      }
+    },
+    {
+      "step": "2",
+      "instruction": "Bake at 350° for about 12 minutes, flipping every 4 minutes.",
+      "id": {
+        "$oid": "647a0f4862660af3b3207d01"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "647b361033c926f30a1086ed"
+  },
+  "category_id": {
+    "$oid": "6478f2465b582af3a1de2120"
+  },
+  "sub_category_id": {
+    "$oid": "647b10629c1304d79d8c9895"
+  },
+  "recipe_title": "Chhole (Chickpea Curry)",
+  "servings": "6",
+  "cook_time": "20 min",
+  "description": "This healthy Indian recipe is a flavorful chickpea curry that you can make in just 20 minutes. Also called chana masala, this dish is a comforting and delicious dinner.\r\n\r\nLeftover chickpea curry can be stored in an airtight container and refrigerated for up to three days. To reheat, you can microwave it on High until warm. Chickpea curry is also easy to freeze. Portion and store it in freezer-safe containers for up to two months. Be sure to label the containers so you can keep track of its freshness.",
+  "ingredients": [
+    {
+      "name": "medium serrano pepper, cut into thirds",
+      "quantity": "1",
+      "id": {
+        "$oid": "647b36f1e848a15f0a13c19f"
+      }
+    },
+    {
+      "name": "large cloves garlic",
+      "quantity": "4",
+      "id": {
+        "$oid": "647b36fce848a15f0a13c1a0"
+      }
+    },
+    {
+      "name": "2-inch piece fresh ginger, peeled and coarsely chopped",
+      "quantity": "1",
+      "id": {
+        "$oid": "647b371fe848a15f0a13c1a1"
+      }
+    },
+    {
+      "name": "medium yellow onion, chopped (1-inch)",
+      "quantity": "1",
+      "id": {
+        "$oid": "647b372ce848a15f0a13c1a2"
+      }
+    },
+    {
+      "name": "canola oil or grapeseed oil",
+      "quantity": "6 tablespoons",
+      "id": {
+        "$oid": "647b373be848a15f0a13c1a3"
+      }
+    },
+    {
+      "name": "ground coriander",
+      "quantity": "2 teaspoons",
+      "id": {
+        "$oid": "647b374ee848a15f0a13c1a4"
+      }
+    },
+    {
+      "name": "ground cumin",
+      "quantity": "2 teaspoons",
+      "id": {
+        "$oid": "647b375ae848a15f0a13c1a5"
+      }
+    },
+    {
+      "name": "ground turmeric",
+      "quantity": "1/2 teaspoon",
+      "id": {
+        "$oid": "647b376de848a15f0a13c1a6"
+      }
+    },
+    {
+      "name": "no-salt-added canned diced tomatoes with their juice (from a 28-ounce can)",
+      "quantity": "2 ¼ cups",
+      "id": {
+        "$oid": "647b3787e848a15f0a13c1a7"
+      }
+    },
+    {
+      "name": "kosher salt",
+      "quantity": "¾ teaspoon",
+      "id": {
+        "$oid": "647b37afe848a15f0a13c1a8"
+      }
+    },
+    {
+      "name": "15-ounce cans chickpeas, rinsed",
+      "quantity": "2",
+      "id": {
+        "$oid": "647b37b9e848a15f0a13c1a9"
+      }
+    },
+    {
+      "name": "garam masala",
+      "quantity": "2 teaspoons",
+      "id": {
+        "$oid": "647b37c5e848a15f0a13c1aa"
+      }
+    },
+    {
+      "name": "Fresh cilantro for garnish",
+      "quantity": "1",
+      "id": {
+        "$oid": "647b37d1e848a15f0a13c1ab"
+      }
+    }
+  ],
+  "nutritional_information": [],
+  "img_file_name": "Chickpea-Curry.jpg",
+  "inserted_by": {
+    "$oid": "6474758846c0e914a4524386"
+  },
+  "is_active": true,
+  "status": 2,
+  "directions": []
+},
+{
+  "_id": {
+    "$oid": "647b40c6e33a5aa5a93ce886"
+  },
+  "category_id": {
+    "$oid": "6478f5d6e3f812e474841663"
+  },
+  "sub_category_id": {
+    "$oid": "647b10f79c1304d79d8c9896"
+  },
+  "recipe_title": "Classic Sesame Noodles with Chicken",
+  "servings": "4",
+  "cook_time": "20 Min",
+  "description": "Sesame noodles become a satisfying meal with lean chicken and tons of veggies in this quick, healthy noodle recipe. Be sure to rinse the spaghetti until it's cold, then give it a good shake in the colander until it's well drained. Are you a spiralizing pro? Swap 5 cups of raw zucchini, carrot or other veggie \"noodles\" for the cooked pasta.",
+  "ingredients": [
+    {
+      "name": "whole-wheat spaghetti",
+      "quantity": "8 ounces",
+      "id": {
+        "$oid": "647b43e157ed6b5ff901f25f"
+      }
+    },
+    {
+      "name": "toasted (dark) sesame oil",
+      "quantity": "3 tablespoons",
+      "id": {
+        "$oid": "647b43ec57ed6b5ff901f260"
+      }
+    },
+    {
+      "name": "scallions, chopped",
+      "quantity": "2",
+      "id": {
+        "$oid": "647b43f957ed6b5ff901f261"
+      }
+    },
+    {
+      "name": "minced garlic",
+      "quantity": "1 tablespoon",
+      "id": {
+        "$oid": "647b440e57ed6b5ff901f262"
+      }
+    },
+    {
+      "name": "minced fresh ginger",
+      "quantity": "2 teaspoons",
+      "id": {
+        "$oid": "647b444057ed6b5ff901f263"
+      }
+    },
+    {
+      "name": "reduced-sodium soy sauce",
+      "quantity": "2 tablespoons",
+      "id": {
+        "$oid": "647b444b57ed6b5ff901f264"
+      }
+    },
+    {
+      "name": "ketchup",
+      "quantity": "2 tablespoons",
+      "id": {
+        "$oid": "647b445657ed6b5ff901f265"
+      }
+    },
+    {
+      "name": "cooked boneless, skinless chicken breast, shredded",
+      "quantity": "8 ounces",
+      "id": {
+        "$oid": "647b446357ed6b5ff901f266"
+      }
+    },
+    {
+      "name": "julienned carrots",
+      "quantity": "1 cup",
+      "id": {
+        "$oid": "647b446c57ed6b5ff901f267"
+      }
+    },
+    {
+      "name": "sliced snap peas",
+      "quantity": "1 cup",
+      "id": {
+        "$oid": "647b447757ed6b5ff901f268"
+      }
+    },
+    {
+      "name": "toasted sesame seeds",
+      "quantity": "3 tablespoons",
+      "id": {
+        "$oid": "647b448257ed6b5ff901f269"
+      }
+    }
+  ],
+  "directions": [
+    {
+      "step": "1",
+      "instruction": "Cook spaghetti in a pot of boiling water according to package directions. Drain, rinse and transfer to a large bowl.",
+      "id": {
+        "$oid": "647b45d554c9c34fac827b3f"
+      }
+    },
+    {
+      "step": "2",
+      "instruction": "Combine sesame oil, scallions, garlic, ginger and brown sugar in a small saucepan. Heat over medium heat until starting to sizzle. Cook for 15 seconds. Remove from heat and stir in soy sauce and ketchup. Add to the noodles along with chicken, carrots, snap peas and sesame seeds; gently toss to combine.",
+      "id": {
+        "$oid": "647b45dc54c9c34fac827b40"
+      }
+    }
+  ],
+  "nutritional_information": [
+    {
+      "name": "Carbohydrate",
+      "quantity": "53g",
+      "id": {
+        "$oid": "647b4736b4c077b5a640f300"
+      }
+    },
+    {
+      "name": "Dietary Fiber",
+      "quantity": "9g",
+      "id": {
+        "$oid": "647b473fb4c077b5a640f301"
+      }
+    },
+    {
+      "name": "Total Sugars",
+      "quantity": "7g",
+      "id": {
+        "$oid": "647b474ab4c077b5a640f302"
+      }
+    },
+    {
+      "name": "Added Sugars",
+      "quantity": "2g",
+      "id": {
+        "$oid": "647b4754b4c077b5a640f303"
+      }
+    },
+    {
+      "name": "Protein",
+      "quantity": "29g",
+      "id": {
+        "$oid": "647b475eb4c077b5a640f304"
+      }
+    },
+    {
+      "name": "Total Fat",
+      "quantity": "17g",
+      "id": {
+        "$oid": "647b4769b4c077b5a640f305"
+      }
+    },
+    {
+      "name": "Saturated Fat",
+      "quantity": "3g",
+      "id": {
+        "$oid": "647b4773b4c077b5a640f306"
+      }
+    },
+    {
+      "name": "Cholesterol",
+      "quantity": "48mg",
+      "id": {
+        "$oid": "647b477eb4c077b5a640f307"
+      }
+    },
+    {
+      "name": "Iron",
+      "quantity": "5mg",
+      "id": {
+        "$oid": "647b478cb4c077b5a640f308"
+      }
+    },
+    {
+      "name": "Calcium",
+      "quantity": "126mg",
+      "id": {
+        "$oid": "647b479bb4c077b5a640f309"
+      }
+    }
+  ],
+  "img_file_name": "Classic-Sesame-Noodles-with-Chicken.jpg",
+  "inserted_by": {
+    "$oid": "647b0835652781c52ec4e578"
+  },
+  "is_active": true,
+  "status": 2
+},
+{
+  "_id": {
+    "$oid": "648ac123f1b201e9b0a10cb2"
+  },
+  "category_id": {
+    "$oid": "6478f2465b582af3a1de2120"
+  },
+  "sub_category_id": {
+    "$oid": "647983295201ac662168e0a5"
+  },
+  "recipe_title": "Test Recipe",
+  "servings": "2",
+  "cook_time": "23 min",
+  "description": "description",
+  "ingredients": [
+    {
+      "name": "Test",
+      "quantity": "1",
+      "id": {
+        "$oid": "648ac12ef1b201e9b0a10cb5"
+      }
+    }
+  ],
+  "directions": [
+    {
+      "step": "1",
+      "instruction": "Instructions",
+      "id": {
+        "$oid": "648ac136f1b201e9b0a10cb8"
+      }
+    }
+  ],
+  "nutritional_information": [
+    {
+      "name": "Test Nutri",
+      "quantity": "1gm",
+      "id": {
+        "$oid": "648ac145f1b201e9b0a10cbb"
+      }
+    }
+  ],
+  "img_file_name": "cheese.jpg",
+  "inserted_by": {
+    "$oid": "6474758846c0e914a4524386"
+  },
+  "is_active": true,
+  "status": 2
+}]

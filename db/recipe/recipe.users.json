@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "647b0835652781c52ec4e578"
+  },
+  "full_name": "Mithra Rishi",
+  "email": "user1@gmail.com",
+  "contact_no": "9517534268",
+  "password": "1234",
+  "is_active": true
+},
+{
+  "_id": {
+    "$oid": "647c34f022b608c7ae7e7b53"
+  },
+  "full_name": "Sonia Dhillon",
+  "email": "user2@gmail.com",
+  "contact_no": "7536952123",
+  "password": "1234",
+  "is_active": true
+}]

@@ -1,0 +1,73 @@
+{% set title = "Home" %}
+{% set curPage = "Home" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div id="section" >
+
+    <div class="banner mb-5">
+
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <div class="text-center mb-3">
+            <h1>Find world's best food recipes ..</h1>
+            <h4>Share your recipes here</h4>
+          </div>
+
+          <div class="d-flex gap-3 justify-content-center">
+            {% if session['is_user'] %}
+            <a href="/my-recipes/" class="btn btn-success w-auto">My Recipes</a>
+            {% else %}
+            <a href="/login/" class="btn btn-success w-auto">Login</a>
+            <a href="/registration/" class="btn btn-success w-auto">Sign up</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="categories" class="mb-5 container-fluid">
+      <h3 class="text-center text-success mb-5">Categories</h3>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+      
+        {% for item in categories %}
+        <div class="card" style="width:22rem;">
+          <img src="{{url_for('static',filename='images/categories/'+item['img_file_name'])}}" alt="" class="card-img-top"
+            style="width: 100%;height: 220px;" />
+          <div class="card-body">
+            <h5 class="card-title">{{item['category_name']}}</h5>
+            
+            <a href="/{{item['category_name'] | replace(' ', '-') | lower}}/?id={{item['_id']}}" class="btn btn-sm btn-success text-uppercase float-end">View Sub Categories -></a>
+          </div>
+        </div>
+        {% endfor %}
+      
+      </div>      
+    </div>
+
+    <div id="recentRecipes" class="mb-5 container-fluid">
+      <h3 class="text-center text-success mb-5">Recently Added Recipe's</h3>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+      
+        {% for item in recent_recipes %}
+        <div class="card" style="width:22rem;">
+          <img src="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" alt="" class="card-img-top"
+            style="width: 100%;height: 220px;" />
+          <div class="card-body">
+            <h6 class="card-title mb-3">{{item['recipe_title']}}</h6>
+            <p style="height: 20vh;overflow-x: hidden;">{{item['description']}}</p>
+            <a href="/recipe-details/{{item['_id']}}/" class="btn btn-success text-uppercase float-end">View Recipe -></a>
+          </div>
+        </div>
+        {% endfor %}
+      
+      </div> 
+    </div>
+
+  </div>
+</main>
+
+{% endblock %}

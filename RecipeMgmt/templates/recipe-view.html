@@ -1,0 +1,81 @@
+{% set title = "View Recipe" %}
+{% set curPage = "ViewRecipe" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div class="container my-4">
+    <h5 class="text-center">{{title}}</h5>
+    <div class="border bg-white p-4">
+      <a href="javascript:window.history.go(-1)" class="btn btn-warning btn-sm mb-3">Back to recipe</a>
+
+      <div>
+
+        <h5 class="text-center mb-5">{{recipe['recipe_title']}}</h5>
+        <div class="row mb-5">
+          <div class="col-sm-6">
+            <a href="{{url_for('static',filename='images/recipes/'+recipe['img_file_name'])}}" target="_blank">
+              <img src="{{url_for('static',filename='images/recipes/'+recipe['img_file_name'])}}" alt="{{recipe['recipe_title']}}"
+                style="width: 100%; height:60vh;" />
+            </a>
+          </div>
+          <div class="col-sm-6">
+            <div class="row mb-3">
+              <div class="col-sm-6">
+                <h6>Servings</h6>
+                <p>{{recipe['servings']}}</p>
+              </div>
+              <div class="col-sm-6">
+                <h6>Cook Time</h6>
+                <p>{{recipe['cook_time']}}</p>
+              </div>
+            </div>
+            <h6>Description</h6>
+            <p class="text-secondary-emphasis">{{recipe['description']}}</p>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-sm-3">
+            <h6 class="text-center text-success">Nutritional Information</h5>
+              <div class="border p-3">
+                {% for item in recipe['nutritional_information']%}
+                <p class="d-flex flex-row justify-content-between border-bottom pb-1">
+                  <span><strong class="text-secondary">{{item["name"]}}</strong></span>
+                  <span>{{item["quantity"]}}</span>
+                </p>
+                {% endfor %}
+              </div>
+          </div>
+
+          <div class="col-sm-3">
+            <h6 class="text-center text-success">Ingredients</h5>
+              <div class="border p-3">
+                {% for item in recipe['ingredients']%}
+                <p><strong>{{item["quantity"]}}</strong> {{item["name"]}}</p>
+                {% endfor %}
+              </div>
+          </div>
+
+          <div class="col-sm-6">
+            <h6 class="text-center text-success">Directions</h5>
+              <div class="border p-3">
+                {% for item in recipe['directions']%}
+                <h6>Step {{item["step"]}}</h6>
+                <p>{{item['instruction']}}</p>
+                {% endfor %}
+              </div>
+          </div>
+
+          
+        </div>
+
+      </div>
+
+      
+    </div>
+  </div>
+</main>
+
+{% endblock %}

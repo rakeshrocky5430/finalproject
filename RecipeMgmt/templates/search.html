@@ -1,0 +1,79 @@
+{% set title = "Search" %}
+{% set curPage = "Search" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <section>
+
+    <div class="page-banner mb-5">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <div class="text-center mb-3">
+            <h4 class="text-uppercase">Search Recipes</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="border bg-white p-3">
+            <form action="{{request.uri}}">
+              <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select name="category" id="category" class="form-select">
+                  <option value="">--Select--</option>
+                  {% for item in categories%}
+                  <option value="{{item['_id']}}" {{'selected' if str(item['_id'])==request.args.get('category')}}>
+                    {{item['category_name']}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" id="title"
+                  value="{{request.args.get('title') if request.args.get('title')}}" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="nutrition" class="form-label">Nutritional</label>
+                <input type="text" name="nutrition" id="nutrition"
+                  value="{{request.args.get('nutrition') if request.args.get('nutrition')}}" class="form-control">
+              </div>
+              <button class="btn btn-sm btn-success">Search</button>
+              <a href="/search/" class="btn btn-sm btn-warning">Cancel</a>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-sm-8">
+          <div class="border bg-white p-3">
+            {% if not recipes%}
+            <h5 class="text-danger text-center">Sorry! No recipes found</h5>
+            {% endif %}
+            <div class="d-flex justify-content-between gap-3 flex-wrap">
+
+              {% for item in recipes %}
+              <div class="card" style="width:22rem;">
+                <img src="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" alt=""
+                  class="card-img-top" style="width: 100%;height: 220px;" />
+                <div class="card-body">
+                  <h6 class="card-title mb-3">{{item['recipe_title']}}</h6>
+                  <a href="/recipe-details/{{item['_id']}}/" class="btn btn-success text-uppercase float-end">View
+                    Recipe -></a>
+                </div>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+{% endblock %}

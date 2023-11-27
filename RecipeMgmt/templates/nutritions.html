@@ -1,0 +1,74 @@
+{% set title = "Nutritional Information" %}
+{% set curPage = "Nutrition" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div class="container-fluid my-4">
+    <h5 class="text-center">{{title}} for {{recipe['recipe_title']}}</h5>
+    <div class="border bg-white p-4">
+      <a href="/ingredients/?recipe_id={{recipe['_id']}}" class="btn btn-sm btn-primary mb-3">Ingredients</a>
+      <a href="/directions/?recipe_id={{recipe['_id']}}" class="btn btn-sm btn-primary mb-3">Directions</a>
+      <a href="/my-recipes/" class="btn btn-sm btn-warning mb-3">Back to recipes</a>
+      <div class="row g-4">
+        <div class="col-sm-4">
+          <form action="/nutritions/" method="post" class="border p-3">
+            <div class="mb-3">
+              <label for="name" class="form-label required">Name</label>
+              <input type="text" name="name" id="name" class="form-control" value="{{nutrition['name']}}" required autofocus>
+            </div>
+
+            <div class="mb-3">
+              <label for="quantity" class="form-label required">Quantity</label>
+              <input type="text" name="quantity" id="quantity" class="form-control" value="{{nutrition['quantity']}}" required>
+            </div>
+
+            <div class="mb-3">
+              <input type="hidden" name="recipe_id" value="{{recipe['_id']}}">
+              <input type="hidden" name="nutrition_id" value="{{nutrition['id']}}">
+              <button type="submit" class="btn btn-success w-100">Save</button>
+            </div>            
+
+            {% if nutrition %}
+            <div class="mb-3">
+              <a href="/nutritions/?recipe_id={{recipe['_id']}}" class="btn btn-warning  w-100">Cancel</a>
+            </div>
+            {% endif %}
+
+          </form>
+        </div>
+
+        <div class="col-sm-8">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="table">
+              <thead> 
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Quantity</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in recipe['nutritional_information'] %}
+                <tr>
+                  <td>{{loop.index}}</td>
+                  <td>{{item['name']}}</td>
+                  <td>{{item['quantity']}}</td>
+                  <td>
+                    <a href="/nutritions/?nutrition_id={{item['id']}}&recipe_id={{recipe['_id']}}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="/nutrition/delete/?nutrition_id={{item['id']}}&recipe_id={{recipe['_id']}}" class="btn btn-sm btn-danger">Delete</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

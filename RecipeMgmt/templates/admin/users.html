@@ -1,0 +1,46 @@
+{% set title = "Registered Users" %}
+{% set curPage = "Users" %}
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+  <div class="container-fluid my-4">
+    <h5 class="text-center border my-2 bg-white p-2">{{title}}</h5>
+
+    <div class="border bg-white p-4">
+      <a href="javascript:window.history.go(-1)" class="btn btn-warning btn-sm mb-3"><- Back</a>
+      <div class="table-responsive">
+        <table class="table table-bordered" id="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Contact No</th>
+              <th style="width: 8%;">Recipes</th>
+              <td style="width: 22%;">Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in users %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>{{item['full_name']}}</td>
+              <td>{{item['email']}}</td>
+              <td>{{item['contact_no']}}</td>
+              <td>{{item['recipe_count']}}</td>
+              <td>
+                <a href="/admin/view-user-recipes/?user_id={{item['_id']}}" class="btn btn-sm btn-primary">View Recipes</a>
+                <a href="/admin/delete-user/{{item['_id']}}/" onclick="return confirm('Note : deleting this user will also delete all the recipes added by this user, Are you sure to delete?')" class="btn btn-sm btn-danger">Delete User</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+{% endblock %}

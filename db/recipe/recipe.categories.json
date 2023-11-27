@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "6478f2465b582af3a1de2120"
+  },
+  "category_name": "Vegetarian",
+  "img_file_name": "veg-1.jpg",
+  "is_active": true
+},
+{
+  "_id": {
+    "$oid": "6478f5d6e3f812e474841663"
+  },
+  "category_name": "Non Vegetarian",
+  "img_file_name": "non-veg-1.jpg",
+  "is_active": true
+}]

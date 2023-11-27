@@ -1,0 +1,64 @@
+{% set title = "My Recipes" %}
+{% set curPage = "MyRecipes" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div class="container my-4">
+    <h5 class="text-center border border-success bg-white py-2">{{title}}</h5>
+    <div class="border bg-white p-4">
+
+      <a href="/add-recipe/" class="btn btn-primary btn-sm mb-3">+ Add Recipe</a>
+
+      <div class="table-responsive">
+        <table class="table table-bordered" id="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th style="width:10%">Image</th>
+              <th>Category</th>
+              <th>Sub category</th>
+              <th>Title</th>
+              <th>Status</th>
+              <th style="width:20%;">Others</th>
+              <th style="width:10%;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in recipes %}
+            {% set status = RecipeStatus(item['status'])%}
+            <tr class="{{'rejected' if status.value == 1}}">
+              <td>{{loop.index}}</td>
+              <td>
+                <a href="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" target="_blank">
+                  <img src="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" alt="{{item['recipe_title']}}"
+                    style="width: 100%;" />
+                </a>
+              </td>
+              <td>{{item["category"][0]["category_name"] if item["category"]}}</td>
+              <td>{{item["sub_category"][0]["sub_category_name"] if item["sub_category"]}}</td>
+              <td>{{item["recipe_title"]}}</td>
+              <td>{{status.name}}</td>
+              <td class="">
+                <a href="/ingredients/?recipe_id={{item['_id']}}" class="btn btn-sm btn-outline-success w-100 mb-2">Ingredients <i class="fa-solid fa-circle-arrow-right"></i></a>
+                <a href="/directions/?recipe_id={{item['_id']}}" class="btn btn-sm btn-outline-success w-100 mb-2">Directions <i class="fa-solid fa-circle-arrow-right"></i></a>
+                <a href="/nutritions/?recipe_id={{item['_id']}}" class="btn btn-sm btn-outline-success w-100">Nutritions <i class="fa-solid fa-circle-arrow-right"></i></a>
+              </td>
+              <td>
+                <a href="/view-recipe/{{item['_id']}}/" class="btn btn-sm btn-primary w-100 mb-1">View</a>
+                <a href="/edit-recipe/{{item['_id']}}/" class="btn btn-sm btn-info w-100 mb-1">Edit</a>
+                <a href="/delete-recipe/{{item['_id']}}/" class="btn btn-sm btn-danger w-100 ">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+[{
+  "_id": {
+    "$oid": "64797f6947dede78a2606876"
+  },
+  "category_id": {
+    "$oid": "6478f5d6e3f812e474841663"
+  },
+  "sub_category_name": "Chicken",
+  "img_file_name": "chicken-img-1.jpg",
+  "is_active": true
+},
+{
+  "_id": {
+    "$oid": "647983295201ac662168e0a5"
+  },
+  "category_id": {
+    "$oid": "6478f2465b582af3a1de2120"
+  },
+  "sub_category_name": "Vegan Snack Ideas",
+  "img_file_name": "vegan-snack.jpg",
+  "is_active": true
+},
+{
+  "_id": {
+    "$oid": "647b10629c1304d79d8c9895"
+  },
+  "category_id": {
+    "$oid": "6478f2465b582af3a1de2120"
+  },
+  "sub_category_name": "Vegan Healthy Meals",
+  "img_file_name": "veg-healthy.jpg",
+  "is_active": true
+},
+{
+  "_id": {
+    "$oid": "647b10f79c1304d79d8c9896"
+  },
+  "category_id": {
+    "$oid": "6478f5d6e3f812e474841663"
+  },
+  "sub_category_name": "Non-Vegetarian Healthy Meals",
+  "img_file_name": "non-veg-healthy.jpg",
+  "is_active": true
+}]

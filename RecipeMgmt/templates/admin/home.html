@@ -1,0 +1,77 @@
+{% set title = "Dashboard" %}
+{% set curPage = "Dashboard" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div class="container-fluid my-4">
+    <h5 class="text-center border my-2 bg-white p-2">{{title}}</h5>
+
+    <div class="border bg-white p-4">
+      
+      <div class="d-flex flex-wrap justify-content-center mb-5 gap-2">
+
+        <div class="bg-success text-white border rounded-1 shadow w-25 p-3 text-center">
+          <h6>Total Recipes</h6>
+          <h5>{{dashboard['recipes']}}</h5>
+        </div>
+        <div class="bg-success text-white border rounded-1 shadow w-25 p-3 text-center">
+          <h6>Recipes pending for Approval</h6>
+          <h5>{{dashboard['pending']}}</h5>
+        </div>
+        <div class="bg-success text-white border rounded-1 shadow w-25 p-3 text-center">
+          <h6>Approved Recipes</h6>
+          <h5>{{dashboard['approved']}}</h5>
+        </div>
+        <div class="bg-success text-white border rounded-1 shadow w-25 p-3 text-center">
+          <h6>Rejected Recipes</h6>
+          <h5>{{dashboard['rejected']}}</h5>
+        </div>
+        <div class="bg-success text-white border rounded-1 shadow w-25 p-3 text-center">
+          <h6>Total registered Users</h6>
+          <h5>{{dashboard['registered_users']}}</h5>
+        </div>
+        
+      </div>
+
+      <div class="table-responsive">
+        <h5 class="text-center">Recipes Pending for approval</h5>
+        <table class="table table-bordered" id="table">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td style="width: 10%;">Image</td>
+              <td>Title</td>
+              <td>Inserted By</td>
+              <td style="width: 20%;">Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in recipes %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>
+                <a href="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" target="_blank">
+                  <img src="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" alt="{{item['recipe_title']}}"
+                    style="width: 100%;" />
+                </a>
+              </td>
+              <td>{{item["recipe_title"]}}</td>
+              <td>{{item["user"][0]["full_name"]}}</td>
+              <td>
+                <a href="/admin/view-recipe/{{item['_id']}}/" class="btn btn-sm btn-primary">View</a>
+                <a href="/admin/approve-recipe/{{item['_id']}}/?url={{request.path}}" class="btn btn-sm btn-success">Approve</a>
+                <a href="/admin/reject-recipe/{{item['_id']}}/?url={{request.path}}" class="btn btn-sm btn-danger">Reject</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+{% endblock %}

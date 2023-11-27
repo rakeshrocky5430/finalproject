@@ -1,0 +1,48 @@
+{% set title = "Home" %}
+{% set curPage = "Home" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div id="section" >
+
+    <div class="page-banner mb-5">
+
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <div class="text-center mb-3">
+            <h4 class="text-uppercase">view {{category_name}} - recipes</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="subCategoriesRecipes" class="container">
+      {% for sub_cat in sub_cat_recipes%}
+        {% if sub_cat['recipes'] %}
+        <div class="mb-5">
+          <h3 class="text-success text-uppercase mb-3 border-left bg-white p-2 text-center">{{sub_cat['sub_category_name']}}</h3>
+          <div class="d-flex justify-content-start gap-3 flex-wrap">
+            {% for item in sub_cat['recipes'] %}
+            <div class="card" style="width:21rem;">
+              <img src="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" alt="" class="card-img-top"
+                style="width: 100%;height: 220px;" />
+              <div class="card-body">
+                <h6 class="card-title mb-3">{{item['recipe_title']}}</h6>
+                <p style="height: 20vh;overflow-x: hidden;">{{item['description']}}</p>
+                <a href="/recipe-details/{{item['_id']}}/" class="btn btn-success text-uppercase float-end">View Recipe -></a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif%}
+      {% endfor %}
+    </div>
+
+  </div>
+</main>
+
+{% endblock %}

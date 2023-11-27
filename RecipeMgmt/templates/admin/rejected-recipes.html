@@ -1,0 +1,51 @@
+{% set title = "Rejected Recipes" %}
+{% set curPage = "Recipes" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+  <div class="container my-4">
+    <h5 class="text-center border my-2 bg-white p-2">{{title}}</h5>
+    <div class="border bg-white p-4">
+
+      <div class="table-responsive">
+        <table class="table table-bordered" id="table">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td style="width: 10%;">Image</td>
+              <td>Title</td>
+              <td>Inserted By</td>
+              <td style="width: 20%;">Action</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in recipes %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>
+                <a href="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" target="_blank">
+                  <img src="{{url_for('static',filename='images/recipes/'+item['img_file_name'])}}" alt="{{item['recipe_title']}}"
+                    style="width: 100%;" />
+                </a>
+              </td>
+              <td>{{item["recipe_title"]}}</td>
+              <td>{{item["user"][0]["full_name"]}}</td>
+              <td>
+                <a href="/admin/view-recipe/{{item['_id']}}/" class="btn btn-sm btn-primary">View</a>
+                <a href="/admin/approve-recipe/{{item['_id']}}/?url={{request.path}}" class="btn btn-sm btn-success">Approve</a>
+                <a href="/admin/delete-recipe/{{item['_id']}}/" class="btn btn-sm btn-danger">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+  </div>
+</main>
+
+{% endblock %}
